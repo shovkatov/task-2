@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { POST_CREATED, POST_RECEIVED, USER_AUTH, USER_RECEIVED } from './actionTypes';
+import { AUTHOR_NAME, AUTH_ID, POST_CREATED, POST_RECEIVED, USER_AUTH, USER_RECEIVED } from './actionTypes';
 
 const _URL = 'https://jsonplaceholder.typicode.com';
 
@@ -16,5 +16,13 @@ export const postReceived = () => (dispatch) => {
 };
 
 export const postCreated = (newPost) => (dispatch) => {
-   axios.post(`${_URL}/posts`, newPost).then((res) => dispatch({ type: POST_CREATED }));
+   axios.post(`${_URL}/posts`, newPost).then((res) => dispatch({ type: POST_CREATED, payload: res.data }));
+};
+
+export const authID = (ID) => (dispatch) => {
+   dispatch({ type: AUTH_ID, payload: ID });
+};
+
+export const authorName = (ID) => (dispatch) => {
+   dispatch({ type: AUTHOR_NAME, payload: ID });
 };

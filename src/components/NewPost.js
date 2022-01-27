@@ -5,18 +5,14 @@ import { useNavigate } from 'react-router-dom';
 import { postCreated, postReceived } from '../redux/actions';
 
 const NewPost = () => {
-  const navigateTo = useNavigate()
-   const post = useSelector((state) => state.posts);
+   const navigateTo = useNavigate();
+   const ID = useSelector((state) => state.authID);
    const dispatch = useDispatch();
    const [newPost, setnewPost] = useState({
-      userId: 105,
+      userId: '',
       title: '',
       body: '',
    });
-
-   useEffect(()=>{
-    dispatch(postCreated(newPost));
-   },[])
 
    const openNotification = (type) => {
       if (type == 'error') {
@@ -45,13 +41,13 @@ const NewPost = () => {
 
    const inputToUser = (e) => {
       let { name, value } = e.target;
-      setnewPost({ ...newPost, [name]: value });
+      setnewPost({ ...newPost, userId: ID, [name]: value });
    };
 
    const { title, body } = newPost;
 
    return (
-      <div>
+      <div className='m-auto w-1/2 pt-10 form_btn'>
          <Form
             name="basic"
             labelCol={{ span: 8 }}
@@ -68,7 +64,7 @@ const NewPost = () => {
                <Input value={body} name="body" onChange={inputToUser} />
             </Form.Item>
 
-            <Form.Item wrapperCol={{ offset: 7, span: 16 }}>
+            <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
                <Button type="primary" htmlType="submit">
                   ADD
                </Button>

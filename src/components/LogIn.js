@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { userAuth, userReceived } from '../redux/actions';
+import { authID, userAuth, userReceived } from '../redux/actions';
 
 function LogIn () {
    const navigate = useNavigate();
@@ -34,6 +34,11 @@ function LogIn () {
       }
    };
 
+   function authId(){
+      const ID = state.filter(i=>i.email===user.email)
+      return ID[0].id
+   }
+
    const onFinish = () => {
       if (!email) {
          openNotification('error');
@@ -41,10 +46,9 @@ function LogIn () {
       } else {
         if (checkEmail()) {
            dispatch(userAuth())
+           dispatch(authID(authId()))
             openNotification('success');
-            setTimeout(() => {
-               navigate('/');
-            }, 500);
+            navigate('/');
          } else {
             openNotification('error');
          }

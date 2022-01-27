@@ -1,9 +1,11 @@
-import { POST_CREATED, POST_RECEIVED, USER_AUTH, USER_RECEIVED } from './actionTypes';
+import { AUTHOR_NAME, AUTH_ID, POST_CREATED, POST_RECEIVED, USER_AUTH, USER_RECEIVED } from './actionTypes';
 
 const initState = {
    users: [],
    posts: [],
    isAuth: false,
+   authID: [],
+   authorName: '',
 };
 
 const reducer = (state = initState, action) => {
@@ -26,7 +28,18 @@ const reducer = (state = initState, action) => {
       case POST_CREATED:
          return {
             ...state,
-         }
+            posts: [action.payload, ...state.posts],
+         };
+      case AUTH_ID:
+         return {
+            ...state,
+            authID: action.payload,
+         };
+      case AUTHOR_NAME:
+         return {
+            ...state,
+            authorName: action.payload,
+         };
       default:
          return state;
    }
