@@ -40,3 +40,9 @@ code {
 .form_btn button {
    background: green !important;
 }
+.ant-modal-footer button:first-of-type {
+   display: none !important;
+}
+.ant-btn {
+   background: blue;
+}

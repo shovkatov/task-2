@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTHOR_NAME, AUTH_ID, POST_CREATED, POST_RECEIVED, USER_AUTH, USER_RECEIVED } from './actionTypes';
+import { AUTHOR_NAME, AUTH_ID, POST_CREATED, POST_RECEIVED, USER_AUTH, USER_RECEIVED, POST_UPDATED, POST_DELETE } from './actionTypes';
 
 const _URL = 'https://jsonplaceholder.typicode.com';
 
@@ -25,4 +25,8 @@ export const authID = (ID) => (dispatch) => {
 
 export const authorName = (ID) => (dispatch) => {
    dispatch({ type: AUTHOR_NAME, payload: ID });
+};
+
+export const postUpdated = (newPost , id) => (dispatch) => {
+   axios.put(`${_URL}/posts/${id}`, newPost).then((res) => dispatch({ type: POST_UPDATED, payload: res.data }));
 };

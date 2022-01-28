@@ -35,7 +35,7 @@ const SelectedPost = () => {
                      <p>{handleCard().name}</p>
                   </div>
                   {checkBtn().username == handleCard().username ? (
-                     <Button onClick={()=>navigate('/edit')} className="bg-green-500 text-lg">
+                     <Button onClick={()=>navigate(`/edit/${handleCard().id}`)} className="bg-green-500 text-lg">
                         Edit
                      </Button>
                   ) : (

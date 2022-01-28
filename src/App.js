@@ -10,7 +10,7 @@ import SelectedPost from './components/SelectedPost';
 
 function App() {
    return (
-      <div className="App bg-slate-300 min-h-screen">
+      <div className="App bg-gray-200 min-h-screen">
          <Header />
          <Routes>
             <Route path="/login" element={<LogIn />} />
@@ -19,7 +19,7 @@ function App() {
                <Route path="/new-post" element={<NewPost/>} />
                <Route path="/author/:id" element={<Author/>} />
                <Route path="/edit-post/:postid" element={<SelectedPost/>} />
-               <Route path="/edit" element={<EditPost/>} />
+               <Route path="/edit/:cardID" element={<EditPost/>} />
             </Route>
          </Routes>
       </div>

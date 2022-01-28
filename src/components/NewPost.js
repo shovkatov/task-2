@@ -1,5 +1,6 @@
 import { Button, Form, Input, notification } from 'antd';
 import React, { useEffect, useState } from 'react';
+import { useId } from 'react-id-generator';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { postCreated, postReceived } from '../redux/actions';
@@ -47,7 +48,7 @@ const NewPost = () => {
    const { title, body } = newPost;
 
    return (
-      <div className='m-auto w-1/2 pt-10 form_btn'>
+      <div className="m-auto w-1/2 pt-10 form_btn">
          <Form
             name="basic"
             labelCol={{ span: 8 }}

@@ -1,4 +1,13 @@
-import { AUTHOR_NAME, AUTH_ID, POST_CREATED, POST_RECEIVED, USER_AUTH, USER_RECEIVED } from './actionTypes';
+import {
+   AUTHOR_NAME,
+   AUTH_ID,
+   POST_CREATED,
+   POST_DELETE,
+   POST_RECEIVED,
+   POST_UPDATED,
+   USER_AUTH,
+   USER_RECEIVED,
+} from './actionTypes';
 
 const initState = {
    users: [],
@@ -30,6 +39,11 @@ const reducer = (state = initState, action) => {
             ...state,
             posts: [action.payload, ...state.posts],
          };
+      // case POST_UPDATED:
+      //    return {
+      //       ...state,
+      //       posts: [action.payload, ...state.posts],
+      //    };
       case AUTH_ID:
          return {
             ...state,
