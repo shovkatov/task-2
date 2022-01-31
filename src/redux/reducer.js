@@ -39,11 +39,11 @@ const reducer = (state = initState, action) => {
             ...state,
             posts: [action.payload, ...state.posts],
          };
-      // case POST_UPDATED:
-      //    return {
-      //       ...state,
-      //       posts: [action.payload, ...state.posts],
-      //    };
+      case POST_UPDATED:
+         return {
+            ...state,
+            posts: [action.payload, ...state.posts.filter(({id})=>id!=action.payload.id)],
+         };
       case AUTH_ID:
          return {
             ...state,

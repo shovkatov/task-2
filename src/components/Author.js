@@ -35,8 +35,8 @@ const Author = () => {
                {newUser.company.bs}
             </Descriptions.Item>
             <Descriptions.Item label="Posts">
-               {userPosts.map((i) => {
-                  return <li>{i.title}</li>;
+               {userPosts.map((i,k) => {
+                  return <li key={k}>{i.title}</li>;
                })}
             </Descriptions.Item>
             <Descriptions.Item label="Address">

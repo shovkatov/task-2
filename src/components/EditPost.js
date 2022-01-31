@@ -16,6 +16,15 @@ const EditPost = () => {
       body: '',
    });
 
+   const postForUpdate = {...posts.filter(i=>i.id==cardID)[0]}
+
+   useEffect(()=>{
+      setnewPost({
+         title:postForUpdate.title,
+         body:postForUpdate.body
+      })   
+   },[])
+
    const openNotification = (type) => {
       if (type == 'error') {
          notification[type]({
