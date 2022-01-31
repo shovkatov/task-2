@@ -45,7 +45,7 @@ function LogIn () {
          return false;
       } else {
         if (checkEmail()) {
-           dispatch(userAuth())
+           dispatch(userAuth(true))
            dispatch(authID(authId()))
             openNotification('success');
             navigate('/');

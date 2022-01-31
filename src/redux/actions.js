@@ -7,8 +7,8 @@ export const userReceived = () => (dispatch) => {
    axios.get(`${_URL}/users`).then((res) => dispatch({ type: USER_RECEIVED, payload: res.data }));
 };
 
-export const userAuth = () => (dispatch) => {
-   dispatch({ type: USER_AUTH, payload: true });
+export const userAuth = (bool) => (dispatch) => {
+   dispatch({ type: USER_AUTH, payload: bool });
 };
 
 export const postReceived = () => (dispatch) => {
